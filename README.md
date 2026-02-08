@@ -1,2250 +1,2363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Otocinclus - HR Consultancy & HRMS Implementation Partner | Build, Operate, Transfer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Otocinclus delivers integrated HR infrastructure for India's growing businesses. Expert HR consultancy, HRMS implementation, payroll compliance, and flat 7% recruitment."
-  />
-  <meta
-    name="keywords"
-    content="HR consultancy, HRMS implementation, payroll services, recruitment agency, HR outsourcing, compliance management, Build-Operate-Transfer, SME HR solutions"
-  />
-
-  <style>
-    /* ---------------------------------
-       Core variables and global reset
-    --------------------------------- */
-    :root {
-      --primary-blue: #4a90e2;
-      --secondary-blue: #5ba3f5;
-      --accent-orange: #e89f5f;
-      --dark-navy: #1f2533;
-      --light-bg: #fcfcf9;
-      --text-dark: #1f2533;
-      --text-light: #626c71;
-      --white: #ffffff;
-
-      --gradient-primary: linear-gradient(135deg, #4a90e2 0%, #5ba3f5 100%);
-      --gradient-secondary: linear-gradient(135deg, #e89f5f 0%, #f5b87f 100%);
-
-      --nav-height: 80px;
-      --max-width: 1200px;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, sans-serif;
-      color: var(--text-dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-      background-color: var(--light-bg);
-    }
-
-    img,
-    svg {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    /* ------------------------------
-       Layout helpers
-    ------------------------------ */
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      width: 100%;
-    }
-
-    section {
-      width: 100%;
-      padding: 5rem 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title h2 {
-      font-size: 2.4rem;
-      margin-bottom: 0.75rem;
-      color: var(--dark-navy);
-      letter-spacing: -0.5px;
-    }
-
-    .section-title p {
-      font-size: 1.05rem;
-      color: var(--text-light);
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    /* ------------------------------
-       Navigation
-    ------------------------------ */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: var(--nav-height);
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-      z-index: 1000;
-      transition: box-shadow 0.3s ease, background 0.3s ease;
-    }
-
-    nav.scrolled {
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.16);
-      background: rgba(255, 255, 255, 0.98);
-    }
-
-    .nav-inner {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .logo-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--gradient-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-weight: 800;
-      font-size: 1.2rem;
-      letter-spacing: -0.5px;
-      animation: logoFloat 3s ease-in-out infinite;
-    }
-
-    .logo-text h1 {
-      margin: 0;
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: -0.6px;
-      color: var(--dark-navy);
-    }
-
-    .logo-text p {
-      margin: 0;
-      font-size: 0.8rem;
-      color: var(--primary-blue);
-      font-weight: 500;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 1.75rem;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text-dark);
-      position: relative;
-      padding-bottom: 3px;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient-primary);
-      transition: width 0.25s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      padding: 0.65rem 1.4rem;
-      border-radius: 999px;
-      border: none;
-      background: var(--gradient-primary);
-      color: var(--white);
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 6px 16px rgba(74, 144, 226, 0.35);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.45);
-    }
-
-    .mobile-toggle {
-      display: none;
-      width: 26px;
-      height: 20px;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-
-    .mobile-toggle span {
-      height: 3px;
-      width: 100%;
-      background: var(--text-dark);
-      border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .mobile-toggle.active span:nth-child(1) {
-      transform: translateY(8.5px) rotate(45deg);
-    }
-
-    .mobile-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .mobile-toggle.active span:nth-child(3) {
-      transform: translateY(-8.5px) rotate(-45deg);
-    }
-
-    /* ------------------------------
-       Hero (full-screen)
-    ------------------------------ */
-    .hero {
-      min-height: calc(100vh - var(--nav-height));
-      padding-top: calc(var(--nav-height) + 1rem);
-      padding-bottom: 4rem;
-      background: linear-gradient(
-        135deg,
-        rgba(74, 144, 226, 0.05) 0%,
-        rgba(232, 159, 95, 0.08) 100%
-      );
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -40%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle,
-        rgba(74, 144, 226, 0.14) 0%,
-        transparent 70%
-      );
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 3.5rem;
-      align-items: center;
-    }
-
-    .hero h2 {
-      font-size: 3rem;
-      line-height: 1.1;
-      margin: 0 0 1rem;
-      color: var(--dark-navy);
-      letter-spacing: -1px;
-    }
-
-    .hero .highlight {
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero .tagline {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      color: var(--text-light);
-      font-weight: 500;
-    }
-
-    .hero p.lead {
-      font-size: 1.03rem;
-      color: var(--text-light);
-      max-width: 640px;
-      margin-bottom: 2rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .btn-primary {
-      border: none;
-      border-radius: 999px;
-      padding: 0.9rem 2.2rem;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      background: var(--gradient-primary);
-      color: var(--white);
-      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.4);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 26px rgba(74, 144, 226, 0.5);
-    }
-
-    .btn-secondary {
-      border-radius: 999px;
-      padding: 0.9rem 2.2rem;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      background: #ffffff;
-      border: 2px solid var(--primary-blue);
-      color: var(--primary-blue);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-    }
-
-    .btn-secondary:hover {
-      background: var(--primary-blue);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
-
-    .hero-badges {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      font-size: 0.85rem;
-      color: var(--text-light);
-    }
-
-    .hero-badge {
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(74, 144, 226, 0.05);
-      border: 1px solid rgba(74, 144, 226, 0.18);
-    }
-
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .floating-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 1.4rem 1.6rem;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .floating-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    .floating-card h3 {
-      margin: 0 0 0.4rem;
-      font-size: 1.1rem;
-      color: var(--primary-blue);
-    }
-
-    .floating-card p {
-      margin: 0;
-      font-size: 0.92rem;
-      color: var(--text-light);
-    }
-
-    /* ------------------------------
-       Stats
-    ------------------------------ */
-    .stats {
-      background: var(--gradient-primary);
-      color: var(--white);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 2.5rem;
-      text-align: center;
-    }
-
-    .stat-item h3 {
-      font-size: 2.6rem;
-      margin: 0 0 0.3rem;
-      font-weight: 800;
-    }
-
-    .stat-item p {
-      margin: 0;
-      font-size: 0.98rem;
-      opacity: 0.96;
-    }
-
-    /* ------------------------------
-       Core Values Slideshow
-    ------------------------------ */
-    .core-values {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-      background: linear-gradient(
-        135deg,
-        rgba(74, 144, 226, 0.03) 0%,
-        rgba(232, 159, 95, 0.03) 100%
-      );
-    }
-
-    .slideshow {
-      border-radius: 18px;
-      background: #ffffff;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-    }
-
-    .slide {
-      display: none;
-      padding: 2.5rem 2.5rem 2.1rem;
-      gap: 2.4rem;
-      align-items: center;
-    }
-
-    .slide.active {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
-    }
-
-    .slide-text h2 {
-      font-size: 2rem;
-      margin: 0 0 0.5rem;
-      color: var(--dark-navy);
-    }
-
-    .slide-text .highlight-orange {
-      color: var(--accent-orange);
-    }
-
-    .slide-text .subtitle {
-      font-size: 1.05rem;
-      color: var(--text-light);
-      margin: 0 0 1.5rem;
-      font-weight: 500;
-    }
-
-    .how-points {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .how-point {
-      display: flex;
-      gap: 0.8rem;
-      padding: 0.9rem 1rem;
-      border-radius: 12px;
-      background: linear-gradient(
-        135deg,
-        rgba(74, 144, 226, 0.04) 0%,
-        rgba(232, 159, 95, 0.04) 100%
-      );
-    }
-
-    .point-icon {
-      flex-shrink: 0;
-      font-size: 1.3rem;
-    }
-
-    .point-text h4 {
-      margin: 0 0 0.2rem;
-      font-size: 0.98rem;
-      color: var(--primary-blue);
-    }
-
-    .point-text p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    .pricing-showcase {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .pricing-row {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      font-size: 0.9rem;
-      color: var(--text-dark);
-    }
-
-    .pricing-label {
-      flex: 0 0 160px;
-      font-weight: 500;
-    }
-
-    .pricing-bar-wrap {
-      flex: 1;
-      height: 34px;
-      border-radius: 20px;
-      background: rgba(0, 0, 0, 0.04);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .pricing-bar {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 0.75rem;
-      font-size: 0.85rem;
-      color: #ffffff;
-      font-weight: 600;
-      transition: width 1.2s ease;
-    }
-
-    .pricing-bar.traditional {
-      background: linear-gradient(
-        90deg,
-        rgba(255, 107, 107, 0.75) 0%,
-        rgba(255, 107, 107, 0.9) 100%
-      );
-    }
-
-    .pricing-bar.otocinclus {
-      background: var(--gradient-secondary);
-    }
-
-    .slide-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-top: 0.5rem;
-    }
-
-    .slideshow-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.2rem;
-      padding: 0.9rem 1.2rem 1.4rem;
-      background: linear-gradient(
-        135deg,
-        rgba(74, 144, 226, 0.05) 0%,
-        rgba(232, 159, 95, 0.05) 100%
-      );
-    }
-
-    .slide-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 2px solid var(--primary-blue);
-      background: #ffffff;
-      color: var(--primary-blue);
-      cursor: pointer;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-    }
-
-    .slide-btn:hover {
-      background: var(--primary-blue);
-      color: #ffffff;
-      transform: scale(1.06);
-    }
-
-    .dots {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(74, 144, 226, 0.35);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .dot.active {
-      width: 26px;
-      background: var(--primary-blue);
-    }
-
-    /* ------------------------------
-       Admin Trap
-    ------------------------------ */
-    .admin-trap {
-      background: #ffffff;
-    }
-
-    .admin-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 2.5rem;
-      align-items: start;
-    }
-
-    .trap-visual {
-      border-radius: 18px;
-      padding: 2rem;
-      background: linear-gradient(
-        135deg,
-        rgba(74, 144, 226, 0.06) 0%,
-        rgba(232, 159, 95, 0.08) 100%
-      );
-    }
-
-    .trap-points {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-    }
-
-    .trap-point {
-      background: var(--light-bg);
-      border-left: 4px solid var(--primary-blue);
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-    }
-
-    .trap-point h4 {
-      margin: 0 0 0.25rem;
-      color: var(--primary-blue);
-      font-size: 1rem;
-    }
-
-    .trap-point p {
-      margin: 0;
-      font-size: 0.92rem;
-      color: var(--text-light);
-    }
-
-    /* ------------------------------
-       Services
-    ------------------------------ */
-    .services {
-      background: var(--light-bg);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.7rem;
-    }
-
-    .service-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 1.8rem 1.6rem 1.8rem;
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .service-card h3 {
-      margin: 0;
-      font-size: 1.15rem;
-      color: var(--dark-navy);
-    }
-
-    .service-card p {
-      margin: 0;
-      font-size: 0.92rem;
-      color: var(--text-light);
-    }
-
-    .service-card ul {
-      margin: 0.6rem 0 0;
-      padding-left: 1.1rem;
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    .service-card li + li {
-      margin-top: 0.3rem;
-    }
-
-    /* ------------------------------
-       Engagement Models (tabs)
-    ------------------------------ */
-    .models {
-      background: #ffffff;
-    }
-
-    .model-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .tab-btn {
-      border-radius: 999px;
-      padding: 0.8rem 1.8rem;
-      border: 2px solid transparent;
-      background: var(--light-bg);
-      cursor: pointer;
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    .tab-btn.active {
-      background: var(--gradient-primary);
-      color: #ffffff;
-      box-shadow: 0 6px 20px rgba(74, 144, 226, 0.35);
-    }
-
-    .model-panel {
-      display: none;
-      border-radius: 18px;
-      background: linear-gradient(
-        135deg,
-        rgba(74, 144, 226, 0.04) 0%,
-        rgba(232, 159, 95, 0.05) 100%
-      );
-      padding: 2.2rem 2rem;
-    }
-
-    .model-panel.active {
-      display: block;
-    }
-
-    .model-panel h3 {
-      margin: 0 0 0.6rem;
-      font-size: 1.5rem;
-      color: var(--dark-navy);
-    }
-
-    .model-panel p {
-      margin: 0 0 1.6rem;
-      font-size: 0.98rem;
-      color: var(--text-light);
-    }
-
-    .model-flow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .flow-step {
-      flex: 1 1 130px;
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 0.9rem 1rem;
-      text-align: center;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-      font-size: 0.86rem;
-    }
-
-    .flow-step h4 {
-      margin: 0 0 0.25rem;
-      color: var(--primary-blue);
-      font-size: 0.9rem;
-    }
-
-    .model-columns {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.3rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .feature-box {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 1.1rem 1rem;
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    .feature-box h4 {
-      margin: 0 0 0.4rem;
-      color: var(--dark-navy);
-      font-size: 0.98rem;
-    }
-
-    .feature-box ul {
-      margin: 0.3rem 0 0;
-      padding-left: 1.1rem;
-    }
-
-    .feature-box li + li {
-      margin-top: 0.25rem;
-    }
-
-    .model-outcome {
-      margin-top: 0.6rem;
-      text-align: center;
-      padding: 1.2rem 1rem;
-      border-radius: 12px;
-      background: #ffffff;
-      font-size: 0.96rem;
-      color: var(--text-light);
-    }
-
-    /* ------------------------------
-       Recruitment
-    ------------------------------ */
-    .recruitment {
-      background: var(--gradient-primary);
-      color: #ffffff;
-    }
-
-    .recruitment .section-title h2,
-    .recruitment .section-title p {
-      color: #ffffff;
-    }
-
-    .recruitment-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 2.5rem;
-      align-items: start;
-    }
-
-    .comparison-card {
-      border-radius: 18px;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(8px);
-    }
-
-    .comparison-card h3 {
-      margin: 0 0 1.2rem;
-      font-size: 1.4rem;
-    }
-
-    .comparison-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-      padding: 0.6rem 0;
-      font-size: 0.94rem;
-    }
-
-    .comparison-row:last-child {
-      border-bottom: none;
-      padding-top: 1rem;
-      margin-top: 0.6rem;
-      border-top: 2px solid rgba(255, 255, 255, 0.4);
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    .recruitment-benefits {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .benefit {
-      border-radius: 14px;
-      padding: 1rem 1.2rem;
-      background: rgba(255, 255, 255, 0.15);
-      font-size: 0.94rem;
-    }
-
-    .benefit h4 {
-      margin: 0 0 0.4rem;
-      font-size: 1rem;
-      color: #ffffff;
-    }
-
-    .benefit p {
-      margin: 0;
-      opacity: 0.96;
-    }
-
-    /* ------------------------------
-       Case Studies
-    ------------------------------ */
-    .case-studies {
-      background: var(--light-bg);
-    }
-
-    .case-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 1.8rem;
-    }
-
-    .case-card {
-      border-radius: 18px;
-      background: #ffffff;
-      padding: 1.8rem 1.6rem;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
-    }
-
-    .case-header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .case-header h3 {
-      margin: 0 0 0.3rem;
-      font-size: 1.1rem;
-      color: var(--dark-navy);
-    }
-
-    .case-header p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    .case-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.1rem;
-      font-size: 0.86rem;
-    }
-
-    .metric {
-      text-align: center;
-      min-width: 90px;
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 1.2rem;
-      color: var(--primary-blue);
-    }
-
-    .case-body p {
-      margin: 0.4rem 0 0;
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    /* ------------------------------
-       Contact
-    ------------------------------ */
-    .contact {
-      background: #ffffff;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 2.5rem;
-    }
-
-    .contact-info h3 {
-      margin: 0 0 0.7rem;
-      font-size: 1.4rem;
-      color: var(--dark-navy);
-    }
-
-    .contact-info p {
-      margin: 0 0 1.4rem;
-      font-size: 0.98rem;
-      color: var(--text-light);
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      font-size: 0.95rem;
-      color: var(--text-dark);
-    }
-
-    .contact-card {
-      background: var(--light-bg);
-      border-radius: 14px;
-      padding: 0.9rem 1rem;
-    }
-
-    .contact-form {
-      border-radius: 18px;
-      background: var(--light-bg);
-      padding: 1.8rem 1.6rem;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.35rem;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--dark-navy);
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      border-radius: 10px;
-      border: 1px solid #e2e8f0;
-      padding: 0.75rem 0.8rem;
-      font-family: inherit;
-      font-size: 0.95rem;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      background: #ffffff;
-    }
-
-    .form-group textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 0 1px rgba(74, 144, 226, 0.35);
-    }
-
-    .submit-btn {
-      width: 100%;
-      border-radius: 999px;
-      border: none;
-      padding: 0.9rem 1.2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      background: var(--gradient-primary);
-      color: #ffffff;
-      box-shadow: 0 7px 20px rgba(74, 144, 226, 0.4);
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 9px 28px rgba(74, 144, 226, 0.48);
-    }
-
-    /* ------------------------------
-       Footer
-    ------------------------------ */
-    footer {
-      background: var(--dark-navy);
-      color: #ffffff;
-      padding: 2.8rem 0 2rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.8rem;
-      margin-bottom: 1.8rem;
-      font-size: 0.9rem;
-    }
-
-    .footer-grid h4 {
-      margin: 0 0 0.7rem;
-      font-size: 1rem;
-    }
-
-    .footer-grid p {
-      margin: 0;
-      opacity: 0.8;
-    }
-
-    .footer-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-list li + li {
-      margin-top: 0.4rem;
-    }
-
-    .footer-list a {
-      text-decoration: none;
-      color: #ffffff;
-      opacity: 0.8;
-    }
-
-    .footer-list a:hover {
-      opacity: 1;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      padding-top: 0.9rem;
-      text-align: center;
-      font-size: 0.86rem;
-      opacity: 0.8;
-    }
-
-    /* ------------------------------
-       Scroll animations
-    ------------------------------ */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ------------------------------
-       Keyframes
-    ------------------------------ */
-    @keyframes logoFloat {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-6px);
-      }
-    }
-
-    /* ------------------------------
-       Responsive
-    ------------------------------ */
-    @media (max-width: 1024px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      }
-      .services-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .model-columns {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .stats-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 900px) {
-      .nav-links {
-        position: fixed;
-        top: var(--nav-height);
-        right: 0;
-        left: 0;
-        background: #ffffff;
-        flex-direction: column;
-        padding: 1rem 1.5rem 1.5rem;
-        transform: translateY(-120%);
-        opacity: 0;
-        pointer-events: none;
-        transition: transform 0.28s ease, opacity 0.28s ease;
-      }
-
-      .nav-links.open {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .mobile-toggle {
-        display: flex;
-      }
-
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-right {
-        order: -1;
-      }
-
-      .slide.active {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .admin-grid,
-      .recruitment-grid,
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero h2 {
-        font-size: 2.2rem;
-      }
-
-      .section-title h2 {
-        font-size: 2rem;
-      }
-
-      .services-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .model-columns {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .stats-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .slide {
-        padding: 2rem 1.6rem 1.6rem;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="container nav-inner">
-      <div class="logo-wrap">
-        <div class="logo-circle">O</div>
-        <div class="logo-text">
-          <h1>OTOCINCLUS</h1>
-          <p>HR & HRMS Infrastructure</p>
-        </div>
-      </div>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#models">Engagement Models</a></li>
-        <li><a href="#recruitment">Recruitment</a></li>
-        <li><a href="#case-studies">Case Studies</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-          <a href="#contact" class="nav-cta">Schedule Free Audit</a>
-        </li>
-      </ul>
-
-      <div class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="container hero-inner">
-      <div class="hero-left fade-in">
-        <h2>
-          We Remove the <span class="highlight">Admin Trap</span>
-        </h2>
-        <p class="tagline">Audit. Advise. Implement. Transfer.</p>
-        <p class="lead">
-          Otocinclus is your HR consultancy and HRMS implementation partner for
-          India's growing businesses. We build professional HR systems, operate
-          them flawlessly, and transfer them to your team when you're ready.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#contact" class="btn-primary">Schedule Consultation</a>
-          <a href="#services" class="btn-secondary">Explore Services</a>
-        </div>
-
-        <div class="hero-badges">
-          <span class="hero-badge">HR Governance & Policy</span>
-          <span class="hero-badge">HRMS Implementation</span>
-          <span class="hero-badge">Payroll & Compliance</span>
-          <span class="hero-badge">Flat 7% Recruitment</span>
-        </div>
-      </div>
-
-      <div class="hero-right fade-in">
-        <div class="floating-card">
-          <h3>Build-Operate-Transfer Model</h3>
-          <p>
-            We build your HR infrastructure, operate it seamlessly, then hand
-            over to your internal HR team with complete documentation.
-          </p>
-        </div>
-        <div class="floating-card">
-          <h3>Vendor-Agnostic HRMS</h3>
-          <p>
-            Expert implementation of Keka, GreytHR, Zoho, Darwinbox and more.
-            We help you select, configure, and operate the right system.
-          </p>
-        </div>
-        <div class="floating-card">
-          <h3>Flat 7% Recruitment – All Levels</h3>
-          <p>
-            Industry-disrupting recruitment pricing. Save 30–65% on senior hires
-            versus traditional agencies, without compromising on quality.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats -->
-  <section class="stats">
-    <div class="container stats-grid fade-in">
-      <div class="stat-item">
-        <h3>30–65%</h3>
-        <p>Cost savings vs. traditional recruitment agencies</p>
-      </div>
-      <div class="stat-item">
-        <h3>20</h3>
-        <p>Founder hours reclaimed every month</p>
-      </div>
-      <div class="stat-item">
-        <h3>28</h3>
-        <p>Average time-to-hire (days)</p>
-      </div>
-      <div class="stat-item">
-        <h3>99.5%</h3>
-        <p>Payroll accuracy target</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Core Value Propositions (Slideshow) -->
-  <section class="core-values">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>How We Free You from HR Chaos</h2>
-        <p>
-          From policy design to HRMS operations and recruitment, we deliver a
-          unified HR infrastructure that founders can trust.
-        </p>
-      </div>
-
-      <div class="slideshow fade-in" id="slideshow">
-        <!-- Slide 1: Admin Trap -->
-        <div class="slide active">
-          <div class="slide-text">
-            <h2>
-              We Remove the
-              <span class="highlight-orange">Admin Trap</span>
-            </h2>
-            <p class="subtitle">
-              Professional HR infrastructure so founders stop firefighting and
-              focus on growth.
-            </p>
-
-            <div class="how-points">
-              <div class="how-point">
-                <div class="point-icon">✅</div>
-                <div class="point-text">
-                  <h4>Complete HR Infrastructure Setup</h4>
-                  <p>
-                    HR policies, HRMS, and compliance frameworks built from
-                    scratch to support scale.
-                  </p>
-                </div>
-              </div>
-              <div class="how-point">
-                <div class="point-icon">⚙️</div>
-                <div class="point-text">
-                  <h4>End-to-End Operations</h4>
-                  <p>
-                    Monthly payroll, statutory compliance, attendance, leave,
-                    and lifecycle operations handled for you.
-                  </p>
-                </div>
-              </div>
-              <div class="how-point">
-                <div class="point-icon">🛡️</div>
-                <div class="point-text">
-                  <h4>Zero Compliance Risk</h4>
-                  <p>
-                    Maker-checker processes, automated compliance calendars,
-                    and professional indemnity coverage.
-                  </p>
-                </div>
-              </div>
-              <div class="how-point">
-                <div class="point-icon">🔁</div>
-                <div class="point-text">
-                  <h4>Build-Operate-Transfer</h4>
-                  <p>
-                    We run the function till it is stable, then transfer
-                    complete ownership to your internal team.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="slide-cta">
-              <a href="#admin-trap" class="btn-secondary">See the Admin Trap</a>
-            </div>
-          </div>
-
-          <div>
-            <strong>Growing businesses, 15–100 employees:</strong>
-            <p style="margin-top:0.4rem; font-size:0.92rem; color:var(--text-light);">
-              Too large for spreadsheets. Too early for a VP of HR. Too risky to
-              ignore compliance. Otocinclus bridges this gap with a
-              full-stack HR engine.
-            </p>
-          </div>
-        </div>
-
-        <!-- Slide 2: Flat 7 Recruitment -->
-        <div class="slide">
-          <div class="slide-text">
-            <h2>
-              <span class="highlight-orange">Flat 7% Recruitment</span> for All
-              Levels
-            </h2>
-            <p class="subtitle">
-              We eliminate the “leadership penalty” charged by traditional
-              agencies and keep your costs predictable.
-            </p>
-
-            <div class="pricing-showcase">
-              <div class="pricing-row">
-                <span class="pricing-label">Traditional – Juniors</span>
-                <div class="pricing-bar-wrap">
-                  <div class="pricing-bar traditional" style="width: 45%">
-                    8.33%
-                  </div>
-                </div>
-              </div>
-              <div class="pricing-row">
-                <span class="pricing-label">Traditional – Mid</span>
-                <div class="pricing-bar-wrap">
-                  <div class="pricing-bar traditional" style="width: 70%">
-                    12–15%
-                  </div>
-                </div>
-              </div>
-              <div class="pricing-row">
-                <span class="pricing-label">Traditional – Senior</span>
-                <div class="pricing-bar-wrap">
-                  <div class="pricing-bar traditional" style="width: 100%">
-                    20%+
-                  </div>
-                </div>
-              </div>
-              <div class="pricing-row">
-                <span class="pricing-label"><strong>Otocinclus – All Levels</strong></span>
-                <div class="pricing-bar-wrap">
-                  <div class="pricing-bar otocinclus" style="width: 35%">
-                    7% Flat
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <p style="font-size:0.9rem; color:var(--text-light); margin-bottom:1rem;">
-              Same quality sourcing, screening, coordination, and negotiation
-              across junior, mid, and senior hires. 90‑day free replacement
-              included.
-            </p>
-
-            <div class="slide-cta">
-              <a href="#recruitment" class="btn-primary">View Recruitment Model</a>
-            </div>
-          </div>
-
-          <div>
-            <strong>Impact on your hiring budget:</strong>
-            <p style="margin-top:0.4rem; font-size:0.92rem; color:var(--text-light);">
-              Traditional agencies charge 20%+ for leadership roles. Flat 7%
-              from Otocinclus can save ₹12L+ across a handful of senior hires,
-              while integrating tightly with your HR and payroll operations.
-            </p>
-          </div>
-        </div>
-
-        <!-- Slideshow controls -->
-        <div class="slideshow-controls">
-          <button class="slide-btn" id="prevSlide" aria-label="Previous slide">
-            ‹
-          </button>
-          <div class="dots">
-            <div class="dot active" data-slide="0"></div>
-            <div class="dot" data-slide="1"></div>
-          </div>
-          <button class="slide-btn" id="nextSlide" aria-label="Next slide">
-            ›
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Admin Trap -->
-  <section class="admin-trap" id="admin-trap">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>The Admin Trap: Where Growth Stalls</h2>
-        <p>
-          Between 15–100 employees, founders start losing 20+ hours a month to
-          HR admin, while compliance and people experience suffer quietly in
-          the background.
-        </p>
-      </div>
-
-      <div class="admin-grid fade-in">
-        <div class="trap-visual">
-          <h3 style="margin-top:0; margin-bottom:0.5rem;">Administrative Complexity vs. Headcount</h3>
-          <p style="margin-top:0; font-size:0.9rem; color:var(--text-light);">
-            Complexity increases non‑linearly as you grow: more employees,
-            multiple locations, new statutes, and rising expectations.
-          </p>
-          <ul style="margin:0.6rem 0 0; padding-left:1.1rem; font-size:0.9rem; color:var(--text-light);">
-            <li>15–30 employees: spreadsheets become fragile; manual payroll risks errors.</li>
-            <li>30–60 employees: compliance filings and audits intensify.</li>
-            <li>60–100 employees: investor due diligence and employer branding start to matter.</li>
-          </ul>
-        </div>
-
-        <div class="trap-points">
-          <div class="trap-point">
-            <h4>Time Drain</h4>
-            <p>
-              Founders and CXOs spend 15–25 hours per week on HR administration
-              — almost 25% of strategic capacity lost.
-            </p>
-          </div>
-          <div class="trap-point">
-            <h4>Compliance Risk</h4>
-            <p>
-              New Social Security Code and labour regulations bring penalties,
-              interest, and even imprisonment. Ignorance is not protection.
-            </p>
-          </div>
-          <div class="trap-point">
-            <h4>Financial Loss</h4>
-            <p>
-              30–40% higher effective HR costs due to errors, delays, penalties,
-              and missed opportunities to optimise structure.
-            </p>
-          </div>
-          <div class="trap-point">
-            <h4>Strategic Impact</h4>
-            <p>
-              Weak HR infrastructure blocks investor readiness, damages employer
-              brand, and slows down hiring velocity exactly when you need
-              momentum.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>Comprehensive HR Infrastructure Services</h2>
-        <p>
-          Full-stack HR and HRMS services designed for growing businesses. We
-          handle the engine room so you can focus on customers and product.
-        </p>
-      </div>
-
-      <div class="services-grid fade-in">
-        <div class="service-card">
-          <h3>HR Governance & Policy Design</h3>
-          <p>
-            Compliant, scalable HR foundations with professionally designed
-            policies and frameworks.
-          </p>
-          <ul>
-            <li>HR policy & employee handbook</li>
-            <li>Org structure & role definitions</li>
-            <li>HR process mapping & SOPs</li>
-            <li>Compliance framework (PF, ESI, PT, labour laws)</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <h3>HRMS Selection, Implementation & Admin</h3>
-          <p>
-            Vendor-agnostic HRMS implementation and daily administration,
-            integrated with your workflows.
-          </p>
-          <ul>
-            <li>HRMS selection & fitment advisory</li>
-            <li>Configuration: payroll, attendance, leave</li>
-            <li>Data migration from legacy systems</li>
-            <li>Ongoing HRMS administration & support</li>
-            <li>HRMS training for your internal team</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <h3>Payroll & Statutory Compliance</h3>
-          <p>
-            Accurate, timely payroll with maker-checker and robust compliance
-            controls.
-          </p>
-          <ul>
-            <li>Monthly payroll processing & payslips</li>
-            <li>PF, ESI, PT, TDS deductions & filings</li>
-            <li>Statutory returns and challans</li>
-            <li>Full & final settlements</li>
-            <li>Payroll MIS & analytics</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <h3>Attendance, Leave & Time Management</h3>
-          <p>
-            Automated attendance tracking with clear, well-communicated rules
-            and governance.
-          </p>
-          <ul>
-            <li>Shift rules and attendance logic</li>
-            <li>Leave policy design & automation</li>
-            <li>Monthly attendance reconciliation</li>
-            <li>Dashboards for managers & founders</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <h3>Employee Lifecycle Management</h3>
-          <p>
-            Seamless employee journey from offer to exit, backed by clean
-            documentation.
-          </p>
-          <ul>
-            <li>Onboarding documentation & KYC</li>
-            <li>Digital employee records management</li>
-            <li>Probation & confirmation tracking</li>
-            <li>Appraisal cycle coordination</li>
-            <li>Exit, NOC, and F&F processes</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <h3>Capability Building & Handover</h3>
-          <p>
-            We train your internal HR team to own a professionally set-up
-            function.
-          </p>
-          <ul>
-            <li>HRMS admin training for internal HR</li>
-            <li>Payroll & compliance training</li>
-            <li>Process walkthroughs with SOP handover</li>
-            <li>Post-handover support as required</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Engagement Models -->
-  <section class="models" id="models">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>Engagement Models for Your Growth Stage</h2>
-        <p>
-          Whether you want fully managed HR or a build-operate-transfer model,
-          choose a structure aligned to your internal capabilities.
-        </p>
-      </div>
-
-      <div class="model-tabs fade-in">
-        <button class="tab-btn active" data-tab="model1">Model 1 – Managed HR Services</button>
-        <button class="tab-btn" data-tab="model2">Model 2 – Build-Operate-Transfer</button>
-      </div>
-
-      <!-- Model 1 -->
-      <div class="model-panel active fade-in" id="model1">
-        <h3>Model 1 – Complete Outsourced HR (Managed HR)</h3>
-        <p>
-          Best for companies that want us to handle everything. We act as your
-          extended HR department with a per-employee subscription model.
-        </p>
-
-        <div class="model-flow">
-          <div class="flow-step">
-            <h4>Start</h4>
-            <p>Discovery & scoping</p>
-          </div>
-          <div class="flow-step">
-            <h4>Audit</h4>
-            <p>Gap & risk analysis</p>
-          </div>
-          <div class="flow-step">
-            <h4>Setup</h4>
-            <p>Policies, HRMS, compliance</p>
-          </div>
-          <div class="flow-step">
-            <h4>Operate</h4>
-            <p>Ongoing HR operations</p>
-          </div>
-        </div>
-
-        <div class="model-columns">
-          <div class="feature-box">
-            <h4>HR Policy & Process Setup</h4>
-            <ul>
-              <li>HR policies & employee handbook</li>
-              <li>Org structure & role clarity</li>
-              <li>Process mapping & documentation</li>
-              <li>Compliance framework implementation</li>
-            </ul>
-          </div>
-          <div class="feature-box">
-            <h4>HRMS Implementation & Management</h4>
-            <ul>
-              <li>System selection & configuration</li>
-              <li>Employee data setup & migration</li>
-              <li>Ongoing system administration</li>
-              <li>Issue resolution & enhancements</li>
-            </ul>
-          </div>
-          <div class="feature-box">
-            <h4>Payroll, Compliance & Lifecycle</h4>
-            <ul>
-              <li>Payroll & statutory filings</li>
-              <li>Attendance & leave administration</li>
-              <li>Onboarding, confirmation, exit</li>
-              <li>HR MIS & founder dashboards</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="model-outcome">
-          Get a fully functional HR department without hiring an internal HR
-          team. Predictable monthly costs with enterprise-grade HR
-          infrastructure built-in.
-        </div>
-      </div>
-
-      <!-- Model 2 -->
-      <div class="model-panel fade-in" id="model2">
-        <h3>Model 2 – HR Setup & Transition to Internal HR</h3>
-        <p>
-          Best for companies planning to build an internal HR team. We set up,
-          stabilise, then hand over a ready-to-run HR engine to your hires.
-        </p>
-
-        <div class="model-flow">
-          <div class="flow-step">
-            <h4>Phase 1</h4>
-            <p>HR setup & HRMS implementation</p>
-          </div>
-          <div class="flow-step">
-            <h4>Phase 2</h4>
-            <p>Initial operations (2–3 months)</p>
-          </div>
-          <div class="flow-step">
-            <h4>Phase 3</h4>
-            <p>Training & handover</p>
-          </div>
-        </div>
-
-        <div class="model-columns">
-          <div class="feature-box">
-            <h4>Phase 1 – Build</h4>
-            <ul>
-              <li>Policy & handbook creation</li>
-              <li>Compliance & statutory setup</li>
-              <li>HRMS implementation & config</li>
-              <li>Payroll / attendance / leave setup</li>
-              <li>SOP & process documentation</li>
-            </ul>
-          </div>
-          <div class="feature-box">
-            <h4>Phase 2 – Operate</h4>
-            <ul>
-              <li>Run payroll & compliance filings</li>
-              <li>Administer HRMS & attendance</li>
-              <li>Lifecycle support end-to-end</li>
-              <li>Stabilise systems & fix issues</li>
-            </ul>
-          </div>
-          <div class="feature-box">
-            <h4>Phase 3 – Transfer</h4>
-            <ul>
-              <li>Train internal HR on systems</li>
-              <li>Payroll & compliance training</li>
-              <li>SOP walkthroughs & Q&A</li>
-              <li>Post-handover support as needed</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="model-outcome">
-          Your internal HR team inherits a professionally built, fully
-          operational HR system with clean documentation, training, and
-          optional ongoing support.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Recruitment -->
-  <section class="recruitment" id="recruitment">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>Recruitment Services – Flat 7% Across Levels</h2>
-        <p>
-          We remove the leadership premium charged by traditional agencies and
-          align recruitment economics with your long-term growth.
-        </p>
-      </div>
-
-      <div class="recruitment-grid fade-in">
-        <div class="comparison-card">
-          <h3>Pricing Comparison</h3>
-          <div class="comparison-row">
-            <span>Traditional Agency – Junior</span>
-            <span>8.33%</span>
-          </div>
-          <div class="comparison-row">
-            <span>Traditional Agency – Mid</span>
-            <span>12–15%</span>
-          </div>
-          <div class="comparison-row">
-            <span>Traditional Agency – Senior</span>
-            <span>20%+</span>
-          </div>
-          <div class="comparison-row">
-            <span>Otocinclus – All Levels</span>
-            <span style="color:#e89f5f;">7% Flat</span>
-          </div>
-        </div>
-
-        <div class="recruitment-benefits">
-          <div class="benefit">
-            <h4>End-to-End Talent Acquisition</h4>
-            <p>
-              Requirement understanding, JD creation, sourcing, screening,
-              coordination, offer negotiation, joining coordination, and 90‑day
-              free replacement.
-            </p>
-          </div>
-          <div class="benefit">
-            <h4>Faster, Aligned Hiring</h4>
-            <p>
-              28‑day average time-to-hire (vs. 45‑day market norm). Integrated
-              with HR & payroll operations for seamless onboarding and Day 1
-              readiness.
-            </p>
-          </div>
-          <div class="benefit">
-            <h4>Long-Term Partnership</h4>
-            <p>
-              Recruitment can continue even after HR has been handed over in
-              Model 2, giving you a stable, long-term talent acquisition
-              partner.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Studies -->
-  <section class="case-studies" id="case-studies">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>Case Studies</h2>
-        <p>
-          How we've helped growing businesses break free from the Admin Trap,
-          clean up compliance, and scale confidently.
-        </p>
-      </div>
-
-      <div class="case-grid fade-in">
-        <div class="case-card">
-          <div class="case-header">
-            <div>
-              <h3>B2B SaaS – Scaling 15 to 45 Employees in 8 Months</h3>
-              <p>Industry: SaaS | Model: Managed HR Services (Model 1)</p>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <strong>25+</strong>
-                <span>Founder hours saved per week</span>
-              </div>
-              <div class="metric">
-                <strong>0</strong>
-                <span>Compliance issues in due diligence</span>
-              </div>
-              <div class="metric">
-                <strong>99.5%</strong>
-                <span>Payroll accuracy achieved</span>
-              </div>
-            </div>
-          </div>
-          <div class="case-body">
-            <p>
-              Founder was spending 25+ hours weekly on HR using spreadsheets.
-              Rapid hiring created compliance risks and blocked Series A
-              discussions. We implemented Managed HR Services, set up GreytHR
-              with full payroll configuration, and built a compliance framework
-              for PF, ESI, and PT. 30 new employees were onboarded seamlessly,
-              resulting in clean HR due diligence for Series A.
-            </p>
-          </div>
-        </div>
-
-        <div class="case-card">
-          <div class="case-header">
-            <div>
-              <h3>Manufacturing – Transition to Internal HR Team</h3>
-              <p>Industry: Manufacturing | Model: Build-Operate-Transfer (Model 2)</p>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <strong>₹12L+</strong>
-                <span>Saved vs. traditional agencies</span>
-              </div>
-              <div class="metric">
-                <strong>5</strong>
-                <span>Senior hires at flat 7%</span>
-              </div>
-              <div class="metric">
-                <strong>100%</strong>
-                <span>Complete HR handover</span>
-              </div>
-            </div>
-          </div>
-          <div class="case-body">
-            <p>
-              The company wanted an internal HR team but lacked systems and
-              processes. Previous agency fees were 15–20% per hire. We deployed
-              Model 2: implemented Keka HRMS, ran operations for 3 months while
-              they hired internal HR, then trained the new team and handed over
-              SOPs. 5 senior roles were closed at flat 7%, saving ₹12L+ in
-              recruitment fees.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>Schedule a Free HR Infrastructure Audit</h2>
-        <p>
-          Share a few details and we’ll review your current HR setup, highlight
-          key risks, and recommend the right engagement model for your
-          business.
-        </p>
-      </div>
-
-      <div class="contact-grid fade-in">
-        <div class="contact-info">
-          <h3>Let’s talk about your HR engine</h3>
-          <p>
-            We typically respond within one business day. Expect a focused,
-            founder‑friendly conversation — no generic sales script.
-          </p>
-
-          <div class="contact-details">
-            <div class="contact-card">
-              <strong>Location</strong>
-              <br />
-              Bengaluru, Karnataka, India
-            </div>
-            <div class="contact-card">
-              <strong>Email</strong>
-              <br />
-              contact@otocinclus.com
-            </div>
-            <div class="contact-card">
-              <strong>Phone</strong>
-              <br />
-              +91 XXXXX XXXXX
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-form">
-          <form id="contactForm">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input id="name" name="name" type="text" required />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input id="email" name="email" type="email" required />
-            </div>
-
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input id="phone" name="phone" type="tel" required />
-            </div>
-
-            <div class="form-group">
-              <label for="company">Company Name</label>
-              <input id="company" name="company" type="text" required />
-            </div>
-
-            <div class="form-group">
-              <label for="employees">Number of Employees</label>
-              <select id="employees" name="employees" required>
-                <option value="">Select range</option>
-                <option value="1-15">1–15 employees</option>
-                <option value="15-50">15–50 employees</option>
-                <option value="50-100">50–100 employees</option>
-                <option value="100-250">100–250 employees</option>
-                <option value="250+">250+ employees</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="interest">Service Interest</label>
-              <select id="interest" name="interest" required>
-                <option value="">Select service</option>
-                <option value="model1">Model 1 – Managed HR</option>
-                <option value="model2">Model 2 – Build-Operate-Transfer</option>
-                <option value="recruitment">Recruitment Only</option>
-                <option value="hrms">HRMS Implementation</option>
-                <option value="audit">HR & Compliance Audit</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Context (optional)</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Share your current HR challenges or goals..."
-              ></textarea>
-            </div>
-
-            <button class="submit-btn" type="submit">
-              Submit & Request Audit
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>Otocinclus</h4>
-          <p>
-            Integrated HR and HRMS infrastructure partner for India’s growing
-            businesses — from 15 to 250+ employees.
-          </p>
-        </div>
-        <div>
-          <h4>Quick Links</h4>
-          <ul class="footer-list">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#models">Engagement Models</a></li>
-            <li><a href="#recruitment">Recruitment</a></li>
-            <li><a href="#case-studies">Case Studies</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <p>
-            Bengaluru, Karnataka, India<br />
-            contact@otocinclus.com<br />
-            +91 XXXXX XXXXX
-          </p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        © <span id="year"></span> Otocinclus. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script>
-    // Navbar scroll effect
-    const navbar = document.getElementById("navbar");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 40) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
-    });
-
-    // Mobile menu toggle
-    const mobileToggle = document.getElementById("mobileToggle");
-    const navLinks = document.getElementById("navLinks");
-    mobileToggle.addEventListener("click", () => {
-      mobileToggle.classList.toggle("active");
-      navLinks.classList.toggle("open");
-    });
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        mobileToggle.classList.remove("active");
-      });
-    });
-
-    // Smooth scroll for in-page anchor links (fallback)
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        const targetId = this.getAttribute("href");
-        const target = document.querySelector(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otocinclus - HR Consultancy & HRMS Implementation Partner | Build, Operate, Transfer</title>
+    <meta name="description" content="Otocinclus delivers integrated HR infrastructure for India's growing businesses. Expert HR consultancy, HRMS implementation, payroll compliance & flat 7% recruitment services. We audit, advise, implement, and transfer.">
+    <meta name="keywords" content="HR consultancy, HRMS implementation, payroll services, recruitment agency, HR outsourcing, compliance management, Build-Operate-Transfer, SME HR solutions">
+    <style>
+        :root {
+            --primary-blue: #4A90E2;
+            --secondary-blue: #5BA3F5;
+            --accent-orange: #E89F5F;
+            --dark-navy: #1F2533;
+            --light-bg: #FCFCF9;
+            --text-dark: #1F2533;
+            --text-light: #626C71;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #4A90E2 0%, #5BA3F5 100%);
+            --gradient-secondary: linear-gradient(135deg, #E89F5F 0%, #F5B87F 100%);
         }
-      });
-    });
 
-    // Scroll animations
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light-bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-navy);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text p {
+            font-size: 0.875rem;
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(74, 144, 226, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(232, 159, 95, 0.05) 100%);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark-navy);
+            letter-spacing: -1px;
+        }
+
+        .hero-text .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(74, 144, 226, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            border: 2px solid var(--primary-blue);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .floating-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.5s ease;
+            transform-style: preserve-3d;
+        }
+
+        .floating-card:hover {
+            transform: translateZ(20px) rotateY(5deg);
+        }
+
+        .floating-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .floating-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--gradient-primary);
+            padding: 4rem 2rem;
+            color: var(--white);
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.125rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        /* Admin Trap Section */
+        .admin-trap {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .admin-trap-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark-navy);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .admin-trap-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .trap-visual {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(232, 159, 95, 0.1) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+        }
+
+        .trap-visual .chart {
+            width: 100%;
+            height: 300px;
+            position: relative;
+        }
+
+        .trap-points {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .trap-point {
+            background: var(--light-bg);
+            border-left: 4px solid var(--primary-blue);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .trap-point:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .trap-point h4 {
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .trap-point p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark-navy);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-card ul li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            font-size: 0.9375rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .learn-more {
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .learn-more:hover {
+            gap: 1rem;
+        }
+
+        /* Models Section */
+        .models {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .models-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .models-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: var(--light-bg);
+            color: var(--text-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: 2px solid transparent;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: var(--gradient-primary);
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .model-content {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(232, 159, 95, 0.05) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .model-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .flow-step {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .flow-step:last-child::after {
+            display: none;
+        }
+
+        .flow-step h4 {
+            font-size: 1.125rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-step p {
+            font-size: 0.9375rem;
+            color: var(--text-light);
+        }
+
+        .model-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-box {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-box h4 {
+            font-size: 1.25rem;
+            color: var(--dark-navy);
+            margin-bottom: 1rem;
+        }
+
+        .feature-box ul {
+            list-style: none;
+        }
+
+        .feature-box ul li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .feature-box ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Recruitment Section */
+        .recruitment {
+            padding: 6rem 2rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+
+        .recruitment-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .recruitment-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .pricing-comparison {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .pricing-comparison h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .comparison-item:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-item span:first-child {
+            font-weight: 500;
+        }
+
+        .comparison-item span:last-child {
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .recruitment-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .benefit-item h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            padding: 6rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .case-studies-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .case-study-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-study-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .case-study-info h3 {
+            font-size: 1.75rem;
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study-info p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .case-study-metrics {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric h4 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            font-weight: 800;
+        }
+
+        .metric p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .case-study-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .challenge, .solution {
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: 15px;
+        }
+
+        .challenge h4, .solution h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .challenge p, .solution p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            color: var(--dark-navy);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.25rem;
+        }
+
+        .contact-item-text h4 {
+            font-size: 1rem;
+            color: var(--dark-navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-text p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .contact-form {
+            background: var(--light-bg);
+            padding: 3rem;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-navy);
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.3);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(74, 144, 226, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-navy);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.7;
+            font-size: 0.9375rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            font-size: 0.9375rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-content,
+            .admin-trap-content,
+            .recruitment-content,
+            .contact-container,
+            .case-study-body {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text .tagline {
+                font-size: 1.25rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .flow-step::after {
+                display: none;
+            }
+
+            .model-flow {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .model-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .logo:hover {
+            animation: rotate 1s ease-in-out;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Core Values Slideshow */
+        .core-values {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.03) 0%, rgba(232, 159, 95, 0.03) 100%);
+            padding: 2rem 0 1rem;
+            margin-top: 80px;
+        }
+
+        .core-values-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .slideshow-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: var(--white);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide {
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            padding: 3rem;
+            align-items: center;
+            min-height: 500px;
+        }
+
+        .slide-graphic {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .slide-graphic svg {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+
+        .slide-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .highlight-orange {
+            color: #E89F5F;
+        }
+
+        .slide-text .subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .how-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .how-point {
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(232, 159, 95, 0.05) 100%);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .how-point:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .point-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .point-text h4 {
+            font-size: 1rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .point-text p {
+            font-size: 0.9375rem;
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Pricing Showcase */
+        .pricing-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .bar-label {
+            min-width: 150px;
+            font-size: 0.9375rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .bar-container {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            height: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar {
+            height: 100%;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            transition: width 1.5s ease;
+        }
+
+        .bar.traditional {
+            background: linear-gradient(90deg, rgba(255, 107, 107, 0.6) 0%, rgba(255, 107, 107, 0.8) 100%);
+        }
+
+        .bar.otocinclus {
+            background: var(--gradient-secondary);
+            animation: barPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes barPulse {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; }
+        }
+
+        .bar-value {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9375rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight-bar {
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--accent-orange);
+        }
+
+        .highlight-bar .bar-label {
+            font-size: 1rem;
+            color: var(--accent-orange);
+        }
+
+        .recruitment-benefits-quick {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-quick {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9375rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .benefit-icon {
+            font-size: 1.25rem;
+        }
+
+        /* Slide CTA */
+        .slide-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-slide {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+            display: inline-block;
+        }
+
+        .btn-slide:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(74, 144, 226, 0.4);
+        }
+
+        /* Slide Controls */
+        .slide-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(232, 159, 95, 0.05) 100%);
+        }
+
+        .slide-control {
+            background: var(--white);
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .slide-control:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .slide-dots {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(74, 144, 226, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary-blue);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .dot:hover {
+            background: var(--primary-blue);
+        }
+
+        /* Responsive for slideshow */
+        @media (max-width: 968px) {
+            .slide-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+                min-height: auto;
+            }
+
+            .slide-graphic {
+                padding: 1rem;
+            }
+
+            .slide-graphic svg {
+                max-width: 200px;
+            }
+
+            .slide-text h2 {
+                font-size: 2rem;
+            }
+
+            .how-point {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .bar-label {
+                min-width: 120px;
+                font-size: 0.875rem;
+            }
+
+            .recruitment-benefits-quick {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .core-values {
+                padding: 1rem 0 0.5rem;
+            }
+
+            .slide-content {
+                padding: 1.5rem;
+            }
+
+            .slide-text h2 {
+                font-size: 1.75rem;
+            }
+
+            .pricing-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .bar-label {
+                min-width: auto;
+            }
+
+            .slide-controls {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/4f9e60f6-2d9e-475f-b0f1-cf9f812f2d26" alt="Otocinclus Logo" class="logo">
+                <div class="logo-text">
+                    <h1>OTOCINCLUS</h1>
+                    <p>TECHNOLOGY</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#models">Engagement Models</a></li>
+                <li><a href="#recruitment">Recruitment</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#contact" class="cta-button">Get Started</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Core Value Propositions - Slideshow -->
+    <section class="core-values">
+        <div class="core-values-container">
+            <div class="slideshow-wrapper">
+                <div class="slide active">
+                    <div class="slide-content">
+                        <div class="slide-graphic">
+                            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/4f9e60f6-2d9e-475f-b0f1-cf9f812f2d26" alt="Otocinclus Logo - Admin Trap Solution" style="width: 100%; max-width: 280px; height: auto; animation: logoFloat 3s ease-in-out infinite;">
+                        </div>
+                        <div class="slide-text">
+                            <h2>We Remove the <span class="highlight-orange">Admin Trap</span></h2>
+                            <p class="subtitle">How We Free Your Business from HR Chaos</p>
+                            <div class="how-points">
+                                <div class="how-point">
+                                    <div class="point-icon">🏗️</div>
+                                    <div class="point-text">
+                                        <h4>Complete HR Infrastructure Setup</h4>
+                                        <p>We build professional HR policies, HRMS systems, and compliance frameworks from scratch</p>
+                                    </div>
+                                </div>
+                                <div class="how-point">
+                                    <div class="point-icon">⚙️</div>
+                                    <div class="point-text">
+                                        <h4>End-to-End Operations</h4>
+                                        <p>Monthly payroll, statutory compliance, attendance tracking - we handle everything</p>
+                                    </div>
+                                </div>
+                                <div class="how-point">
+                                    <div class="point-icon">🛡️</div>
+                                    <div class="point-text">
+                                        <h4>Zero Compliance Risk</h4>
+                                        <p>Professional indemnity coverage, maker-checker systems, automated compliance calendars</p>
+                                    </div>
+                                </div>
+                                <div class="how-point">
+                                    <div class="point-icon">🎓</div>
+                                    <div class="point-text">
+                                        <h4>Build-Operate-Transfer Model</h4>
+                                        <p>We build it, run it flawlessly, then transfer complete ownership when you're ready</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-cta">
+                                <a href="#admin-trap" class="btn-slide">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-graphic">
+                            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/4f9e60f6-2d9e-475f-b0f1-cf9f812f2d26" alt="Otocinclus Logo - Flat 7% Recruitment" style="width: 100%; max-width: 280px; height: auto; animation: logoFloat 3s ease-in-out infinite;">
+                        </div>
+                        <div class="slide-text">
+                            <h2><span class="highlight-orange">Flat 7% Recruitment</span> - All Levels</h2>
+                            <p class="subtitle">Industry-Disrupting Pricing That Saves You Massive Costs</p>
+                            <div class="pricing-showcase">
+                                <div class="pricing-bar">
+                                    <div class="bar-label">Traditional - Junior</div>
+                                    <div class="bar-container">
+                                        <div class="bar traditional" style="width: 42%;">
+                                            <span class="bar-value">8.33%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-bar">
+                                    <div class="bar-label">Traditional - Mid</div>
+                                    <div class="bar-container">
+                                        <div class="bar traditional" style="width: 65%;">
+                                            <span class="bar-value">12-15%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-bar">
+                                    <div class="bar-label">Traditional - Senior</div>
+                                    <div class="bar-container">
+                                        <div class="bar traditional" style="width: 100%;">
+                                            <span class="bar-value">20%+</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-bar highlight-bar">
+                                    <div class="bar-label"><strong>Otocinclus - ALL Levels</strong></div>
+                                    <div class="bar-container">
+                                        <div class="bar otocinclus" style="width: 35%;">
+                                            <span class="bar-value">7% FLAT</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recruitment-benefits-quick">
+                                <div class="benefit-quick">
+                                    <span class="benefit-icon">💰</span>
+                                    <span>30-65% savings on senior hires</span>
+                                </div>
+                                <div class="benefit-quick">
+                                    <span class="benefit-icon">⚡</span>
+                                    <span>28 days avg. time-to-hire</span>
+                                </div>
+                                <div class="benefit-quick">
+                                    <span class="benefit-icon">🎯</span>
+                                    <span>90-day free replacement</span>
+                                </div>
+                            </div>
+                            <div class="slide-cta">
+                                <a href="#recruitment" class="btn-slide">View Full Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slideshow Controls -->
+                <div class="slide-controls">
+                    <button class="slide-control prev" onclick="changeSlide(-1)">‹</button>
+                    <div class="slide-dots">
+                        <span class="dot active" onclick="currentSlide(0)"></span>
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                    </div>
+                    <button class="slide-control next" onclick="changeSlide(1)">›</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>We Remove the <span class="highlight">Admin Trap</span></h2>
+                <p class="tagline">Audit. Advise. Implement. Transfer.</p>
+                <p>Otocinclus is your <strong>HR Consultancy &amp; HRMS Implementation Partner</strong> delivering integrated HR infrastructure for India's growing businesses. We build professional HR systems, operate them flawlessly, and transfer them to your team when you're ready.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Schedule Consultation</a>
+                    <a href="#services" class="btn-secondary">Explore Services</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <h3>🚀 Build-Operate-Transfer Model</h3>
+                    <p>We build your HR infrastructure, operate it seamlessly, and transfer complete ownership when ready.</p>
+                </div>
+                <div class="floating-card">
+                    <h3>💼 Vendor-Agnostic HRMS Implementation</h3>
+                    <p>Expert implementation of Keka, GreytHR, Zoho, Darwinbox - we help you choose and deploy the right fit.</p>
+                </div>
+                <div class="floating-card">
+                    <h3>📊 Flat 7% Recruitment - All Levels</h3>
+                    <p>Industry-disrupting recruitment pricing. Save 30-65% on senior hires compared to traditional agencies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>30-65%</h3>
+                <p>Cost Savings vs. Traditional Agencies</p>
+            </div>
+            <div class="stat-item">
+                <h3>20+ Hours</h3>
+                <p>Founder Bandwidth Reclaimed Monthly</p>
+            </div>
+            <div class="stat-item">
+                <h3>28 Days</h3>
+                <p>Reduced Time-to-Hire</p>
+            </div>
+            <div class="stat-item">
+                <h3>99.5%</h3>
+                <p>Payroll Accuracy Target</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Trap Section -->
+    <section id="admin-trap" class="admin-trap">
+        <div class="admin-trap-container">
+            <div class="section-title">
+                <h2>The Admin Trap: Where Growth Stalls</h2>
+                <p>Growing businesses between 15-100 employees face a critical inflection point. Too large for spreadsheets. Too small for a VP of HR. Too risky to ignore.</p>
+            </div>
+            <div class="admin-trap-content">
+                <div class="trap-visual">
+                    <div class="chart">
+                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <text x="10" y="20" font-size="14" fill="#626C71">Administrative Complexity</text>
+                            <path d="M 50 250 L 50 50 L 350 50" stroke="#626C71" stroke-width="2" fill="none"/>
+                            <path d="M 50 250 Q 100 240, 150 180 T 250 80 T 350 60" stroke="#4A90E2" stroke-width="4" fill="none"/>
+                            <circle cx="150" cy="180" r="6" fill="#E89F5F"/>
+                            <text x="140" y="210" font-size="12" fill="#E89F5F" font-weight="bold">The Admin Trap</text>
+                            <text x="130" y="225" font-size="11" fill="#626C71">(15-100 employees)</text>
+                            <text x="10" y="280" font-size="12" fill="#626C71">Employee Count →</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="trap-points">
+                    <div class="trap-point">
+                        <h4>⏱️ Time Drain</h4>
+                        <p>Founders and CXOs spend 15-25 hours per week on HR administration - that's 25% of strategic capacity lost.</p>
+                    </div>
+                    <div class="trap-point">
+                        <h4>⚖️ Compliance Risk</h4>
+                        <p>New Social Security Code penalties include imprisonment and substantial fines. Ignorance is not protection.</p>
+                    </div>
+                    <div class="trap-point">
+                        <h4>💸 Financial Loss</h4>
+                        <p>30-40% higher effective HR costs due to hidden burdens like errors, delays, and opportunity costs.</p>
+                    </div>
+                    <div class="trap-point">
+                        <h4>🎯 Strategic Impact</h4>
+                        <p>Poor HR infrastructure blocks investor readiness, damages employer branding, and limits growth velocity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="services-container">
+            <div class="section-title">
+                <h2>Comprehensive HR Infrastructure Services</h2>
+                <p>Full-stack HR solutions designed for growing businesses. We handle everything so you can focus on growth.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>HR Governance &amp; Policy Design</h3>
+                    <p>Build compliant, scalable HR foundations with professionally designed policies and organizational frameworks.</p>
+                    <ul>
+                        <li>HR policy &amp; employee handbook</li>
+                        <li>Organizational structure &amp; role definitions</li>
+                        <li>HR process mapping and SOPs</li>
+                        <li>Compliance framework (PF, ESI, PT, labour laws)</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>HRMS Selection, Implementation &amp; Administration</h3>
+                    <p>Vendor-agnostic HRMS implementation expertise. We help you select, configure, and operate the right system.</p>
+                    <ul>
+                        <li>HRMS selection &amp; fitment advisory</li>
+                        <li>Complete configuration (payroll, attendance, leave)</li>
+                        <li>Data migration from legacy systems</li>
+                        <li>Ongoing HRMS administration &amp; support</li>
+                        <li>HRMS training for internal teams</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Payroll &amp; Statutory Compliance</h3>
+                    <p>Accurate, timely payroll processing with zero compliance risk. Your compliance shield.</p>
+                    <ul>
+                        <li>Monthly payroll processing &amp; payslips</li>
+                        <li>Statutory deductions &amp; filings (PF, ESI, PT, TDS)</li>
+                        <li>Statutory returns &amp; challans</li>
+                        <li>Full &amp; final settlements</li>
+                        <li>Payroll MIS &amp; analytics reports</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📅</div>
+                    <h3>Attendance, Leave &amp; Time Management</h3>
+                    <p>Automated attendance tracking with intelligent shift and leave management systems.</p>
+                    <ul>
+                        <li>Shift rules and attendance logic design</li>
+                        <li>Leave policy design, setup, and tracking</li>
+                        <li>Monthly attendance reconciliation</li>
+                        <li>Attendance and leave dashboards</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👥</div>
+                    <h3>Employee Lifecycle Management</h3>
+                    <p>Seamless employee journey management from onboarding to exit with complete documentation.</p>
+                    <ul>
+                        <li>End-to-end onboarding (documentation, KYC)</li>
+                        <li>Employee records management (digital files)</li>
+                        <li>Confirmation &amp; probation tracking</li>
+                        <li>Appraisal cycle coordination support</li>
+                        <li>Exit management, NOC, and F&amp;F settlements</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Recruitment Services (Flat 7% - All Levels)</h3>
+                    <p>Industry-disrupting recruitment pricing. Same quality, transparent cost across all levels. <strong>Recruitment services charged separately at flat 7% - affordable rates compared to market standard.</strong></p>
+                    <ul>
+                        <li>Requirement understanding &amp; JD creation</li>
+                        <li>Multi-channel sourcing &amp; screening</li>
+                        <li>Interview coordination with hiring managers</li>
+                        <li>Offer negotiation support</li>
+                        <li>Joining &amp; onboarding coordination</li>
+                        <li>90-day free replacement guarantee</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Capability Building &amp; Handover</h3>
+                    <p>Knowledge transfer and training to empower your internal HR team for independence.</p>
+                    <ul>
+                        <li>HRMS admin training for internal HR</li>
+                        <li>Payroll &amp; compliance training</li>
+                        <li>Process walkthroughs with SOP handover</li>
+                        <li>Knowledge transfer sessions</li>
+                        <li>Post-handover support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models Section -->
+    <section id="models" class="models">
+        <div class="models-container">
+            <div class="section-title">
+                <h2>Engagement Models Designed for Your Journey</h2>
+                <p>Choose the model that matches your growth stage and internal capabilities.</p>
+            </div>
+            
+            <div class="models-tabs">
+                <button class="tab-button active" onclick="switchTab('model1')">Model 1: Managed HR Services</button>
+                <button class="tab-button" onclick="switchTab('model2')">Model 2: Build-Operate-Transfer</button>
+            </div>
+
+            <div id="model1" class="tab-content active">
+                <div class="model-content">
+                    <h3 style="font-size: 2rem; color: var(--dark-navy); margin-bottom: 1rem;">Complete Outsourced HR Services (Managed HR)</h3>
+                    <p style="font-size: 1.125rem; color: var(--text-light); margin-bottom: 2rem;">Best for companies who want us to handle everything. We act as your extended HR department.</p>
+                    
+                    <div class="model-flow">
+                        <div class="flow-step">
+                            <h4>Start</h4>
+                            <p>Initial Audit</p>
+                        </div>
+                        <div class="flow-step">
+                            <h4>Audit</h4>
+                            <p>Gap Analysis</p>
+                        </div>
+                        <div class="flow-step">
+                            <h4>Setup</h4>
+                            <p>Implementation</p>
+                        </div>
+                        <div class="flow-step">
+                            <h4>Operate</h4>
+                            <p>Ongoing Management</p>
+                        </div>
+                    </div>
+
+                    <div class="model-features">
+                        <div class="feature-box">
+                            <h4>HR Policy &amp; Process Setup</h4>
+                            <ul>
+                                <li>HR policies &amp; employee handbook</li>
+                                <li>Organizational structure &amp; role definitions</li>
+                                <li>HR process mapping &amp; documentation</li>
+                                <li>Compliance framework setup</li>
+                            </ul>
+                        </div>
+                        <div class="feature-box">
+                            <h4>HRMS Implementation &amp; Management</h4>
+                            <ul>
+                                <li>HRMS selection support</li>
+                                <li>Complete system configuration</li>
+                                <li>Employee master data setup</li>
+                                <li>Ongoing HRMS administration</li>
+                            </ul>
+                        </div>
+                        <div class="feature-box">
+                            <h4>Payroll &amp; Compliance</h4>
+                            <ul>
+                                <li>Monthly payroll processing</li>
+                                <li>Statutory deductions &amp; filings</li>
+                                <li>Payroll reports &amp; MIS</li>
+                                <li>Full compliance management</li>
+                            </ul>
+                        </div>
+                        <div class="feature-box">
+                            <h4>Employee Lifecycle Management</h4>
+                            <ul>
+                                <li>Onboarding &amp; documentation</li>
+                                <li>Employee records management</li>
+                                <li>Confirmation &amp; appraisal support</li>
+                                <li>Exit management &amp; F&amp;F settlement</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--white); padding: 2rem; border-radius: 15px; margin-top: 3rem; text-align: center;">
+                        <h4 style="font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 1rem;">Outcome</h4>
+                        <p style="font-size: 1.125rem; color: var(--text-light);">Get a fully functional HR department without hiring an internal HR team. Per-employee monthly subscription model provides predictable costs and enterprise-grade HR infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="model2" class="tab-content">
+                <div class="model-content">
+                    <h3 style="font-size: 2rem; color: var(--dark-navy); margin-bottom: 1rem;">HR Setup + Transition to Client HR Team</h3>
+                    <p style="font-size: 1.125rem; color: var(--text-light); margin-bottom: 2rem;">Best for companies planning to build an internal HR team. We set up, stabilize, then hand over.</p>
+                    
+                    <div class="model-flow">
+                        <div class="flow-step">
+                            <h4>Phase 1</h4>
+                            <p>HR Setup &amp; HRMS Implementation</p>
+                        </div>
+                        <div class="flow-step">
+                            <h4>Phase 2</h4>
+                            <p>Initial Operations (2-3 Months)</p>
+                        </div>
+                        <div class="flow-step">
+                            <h4>Phase 3</h4>
+                            <p>Training &amp; Handover</p>
+                        </div>
+                    </div>
+
+                    <div class="model-features">
+                        <div class="feature-box">
+                            <h4>Phase 1: HR Setup &amp; HRMS Implementation</h4>
+                            <ul>
+                                <li>HR policy &amp; handbook creation</li>
+                                <li>Compliance &amp; statutory setup</li>
+                                <li>HRMS implementation</li>
+                                <li>Payroll, attendance &amp; leave setup</li>
+                                <li>Employee data migration</li>
+                                <li>Process documentation (SOPs)</li>
+                            </ul>
+                        </div>
+                        <div class="feature-box">
+                            <h4>Phase 2: Initial Operations (2-3 Months)</h4>
+                            <ul>
+                                <li>Payroll processing &amp; compliance filings</li>
+                                <li>Attendance &amp; leave administration</li>
+                                <li>Employee lifecycle support</li>
+                                <li>HRMS monitoring &amp; fine-tuning</li>
+                                <li>Issue resolution &amp; stabilization</li>
+                            </ul>
+                        </div>
+                        <div class="feature-box">
+                            <h4>Phase 3: Training &amp; Handover</h4>
+                            <ul>
+                                <li>HRMS training for internal HR</li>
+                                <li>Payroll &amp; compliance training</li>
+                                <li>Process walkthroughs &amp; SOP handover</li>
+                                <li>Knowledge transfer sessions</li>
+                                <li>Post-handover support (as required)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--white); padding: 2rem; border-radius: 15px; margin-top: 3rem; text-align: center;">
+                        <h4 style="font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 1rem;">Outcome</h4>
+                        <p style="font-size: 1.125rem; color: var(--text-light);">Your internal HR team inherits a professionally built, fully operational HR system with complete documentation, training, and post-handover support. You own the function.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruitment Section -->
+    <section id="recruitment" class="recruitment">
+        <div class="recruitment-container">
+            <div class="section-title" style="color: var(--white);">
+                <h2>Recruitment Services: Flat 7% - All Levels</h2>
+                <p style="color: rgba(255, 255, 255, 0.95);">We eliminate the "Leadership Penalty" charged by traditional agencies. Same quality, transparent pricing across all levels. <strong>Charged separately at affordable rates below market standard.</strong></p>
+            </div>
+
+            <div class="recruitment-content">
+                <div class="pricing-comparison">
+                    <h3>Pricing Comparison</h3>
+                    <div class="comparison-item">
+                        <span>Traditional Agency - Junior</span>
+                        <span>8.33%</span>
+                    </div>
+                    <div class="comparison-item">
+                        <span>Traditional Agency - Mid</span>
+                        <span>12-15%</span>
+                    </div>
+                    <div class="comparison-item">
+                        <span>Traditional Agency - Senior</span>
+                        <span>20%+</span>
+                    </div>
+                    <div class="comparison-item" style="border-top: 2px solid rgba(255, 255, 255, 0.4); padding-top: 1.5rem; margin-top: 1.5rem;">
+                        <span style="font-size: 1.5rem;">Otocinclus - All Levels</span>
+                        <span style="font-size: 1.75rem; color: #E89F5F;">7%</span>
+                    </div>
+                </div>
+
+                <div class="recruitment-benefits">
+                    <div class="benefit-item">
+                        <h4>💰 30-65% Savings on Senior Hires</h4>
+                        <p>Traditional agencies charge 20%+ for leadership roles. We charge flat 7% regardless of seniority, saving you massive costs on critical hires.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>🎯 Comprehensive Recruitment Support</h4>
+                        <p>Includes sourcing, screening, interview coordination, offer negotiation, joining coordination, and 90-day free replacement guarantee.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>⚡ Faster Turnaround</h4>
+                        <p>28 days average time-to-hire (down from industry standard 45 days). Integration with our HR &amp; payroll operations enables seamless onboarding.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>🤝 Continued Support Post-HR Handover</h4>
+                        <p>Recruitment services can continue even after HR handover in Model 2, providing long-term talent acquisition support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="case-studies">
+        <div class="case-studies-container">
+            <div class="section-title">
+                <h2>Success Stories: Real Impact, Real Results</h2>
+                <p>See how we've helped growing businesses break free from the Admin Trap and scale confidently.</p>
+            </div>
+
+            <div class="case-study-card fade-in">
+                <div class="case-study-header">
+                    <div class="case-study-info">
+                        <h3>SaaS Startup - 45 Employees</h3>
+                        <p>Industry: B2B SaaS | Challenge: Scaling from 15 to 45 employees in 8 months</p>
+                    </div>
+                    <div class="case-study-metrics">
+                        <div class="metric">
+                            <h4>20 Hours</h4>
+                            <p>Founder Time Saved/Week</p>
+                        </div>
+                        <div class="metric">
+                            <h4>Zero</h4>
+                            <p>Compliance Issues</p>
+                        </div>
+                        <div class="metric">
+                            <h4>100%</h4>
+                            <p>Payroll Accuracy</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-body">
+                    <div class="challenge">
+                        <h4>The Challenge</h4>
+                        <p>Founder was spending 25+ hours weekly on HR tasks using spreadsheets. Rapid hiring created compliance risks. Lack of professional HR infrastructure was blocking Series A funding discussions.</p>
+                    </div>
+                    <div class="solution">
+                        <h4>Otocinclus Solution</h4>
+                        <p>Implemented Model 1 (Managed HR Services). Set up GreytHR with complete payroll configuration. Established compliance framework for PF, ESI, PT. Onboarded 30 new employees seamlessly during growth phase. Result: Clean due diligence for Series A raise.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study-card fade-in">
+                <div class="case-study-header">
+                    <div class="case-study-info">
+                        <h3>Manufacturing Company - 80 Employees</h3>
+                        <p>Industry: Manufacturing | Challenge: Transition to internal HR team</p>
+                    </div>
+                    <div class="case-study-metrics">
+                        <div class="metric">
+                            <h4>6 Months</h4>
+                            <p>Complete Handover</p>
+                        </div>
+                        <div class="metric">
+                            <h4>52%</h4>
+                            <p>Cost Savings vs Agency</p>
+                        </div>
+                        <div class="metric">
+                            <h4>3 Months</h4>
+                            <p>Senior Hire Time</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-body">
+                    <div class="challenge">
+                        <h4>The Challenge</h4>
+                        <p>Company was ready to hire internal HR team but lacked systems and processes. Previous agency recruitment costs were 15-20% per hire. Needed professional HRMS but no expertise to implement.</p>
+                    </div>
+                    <div class="solution">
+                        <h4>Otocinclus Solution</h4>
+                        <p>Deployed Model 2 (Build-Operate-Transfer). Phase 1: Implemented Keka HRMS with complete configuration. Phase 2: Ran operations for 3 months while hiring internal HR. Phase 3: Trained internal team with SOP handover. Recruited 5 senior positions at flat 7% (saved ₹12L+ vs traditional agency fees).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Ready to Remove the Admin Trap?</h3>
+                <p>Schedule a free HR infrastructure audit. We'll analyze your current state, identify risks, and recommend the right engagement model for your business.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-item-text">
+                            <h4>Location</h4>
+                            <p>Bengaluru, Karnataka, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-item-text">
+                            <h4>Email</h4>
+                            <p>contact@otocinclus.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-item-text">
+                            <h4>Phone</h4>
+                            <p>+91 XXXXX XXXXX</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name *</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="employees">Number of Employees *</label>
+                        <select id="employees" name="employees" required>
+                            <option value="">Select range</option>
+                            <option value="1-15">1-15 employees</option>
+                            <option value="15-50">15-50 employees</option>
+                            <option value="50-100">50-100 employees</option>
+                            <option value="100-250">100-250 employees</option>
+                            <option value="250+">250+ employees</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">Service Interest *</label>
+                        <select id="interest" name="interest" required>
+                            <option value="">Select service</option>
+                            <option value="model1">Model 1: Managed HR Services</option>
+                            <option value="model2">Model 2: Build-Operate-Transfer</option>
+                            <option value="recruitment">Recruitment Services Only</option>
+                            <option value="hrms">HRMS Implementation Only</option>
+                            <option value="consultation">Free HR Audit</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about your HR challenges</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Schedule Free Consultation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Otocinclus Technology</h4>
+                <p>The integrated HR infrastructure layer enabling India's SME growth engine. We audit, advise, implement, and transfer.</p>
+                <p style="margin-top: 1rem;"><strong>Mission:</strong> To ensure no business fails due to administrative burden or compliance ignorance.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">HR Governance &amp; Policy Design</a></li>
+                    <li><a href="#services">HRMS Implementation</a></li>
+                    <li><a href="#services">Payroll &amp; Compliance</a></li>
+                    <li><a href="#services">Recruitment Services (7%)</a></li>
+                    <li><a href="#services">Employee Lifecycle Management</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Engagement Models</h4>
+                <ul class="footer-links">
+                    <li><a href="#models">Model 1: Managed HR Services</a></li>
+                    <li><a href="#models">Model 2: Build-Operate-Transfer</a></li>
+                    <li><a href="#recruitment">Flat 7% Recruitment</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">About Us</a></li>
+                    <li><a href="#admin-trap">The Admin Trap</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#contact">Free HR Audit</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Otocinclus Technology. All rights reserved. | HR Consultancy &amp; HRMS Implementation Partner | Bengaluru, Karnataka</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
-      },
-      { threshold: 0.15 }
-    );
-    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
 
-    // Engagement models tabs
-    const tabButtons = document.querySelectorAll(".tab-btn");
-    const tabPanels = document.querySelectorAll(".model-panel");
-    tabButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const target = btn.dataset.tab;
-        tabButtons.forEach((b) => b.classList.remove("active"));
-        tabPanels.forEach((panel) => panel.classList.remove("active"));
-        btn.classList.add("active");
-        document.getElementById(target).classList.add("active");
-      });
-    });
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-    // Core values slideshow
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".dot");
-    const prevSlideBtn = document.getElementById("prevSlide");
-    const nextSlideBtn = document.getElementById("nextSlide");
-    let currentSlide = 0;
+        // Tab switching
+        function switchTab(modelId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(modelId).classList.add('active');
+            event.target.classList.add('active');
+        }
 
-    function showSlide(index) {
-      if (slides.length === 0) return;
-      if (index < 0) index = slides.length - 1;
-      if (index >= slides.length) index = 0;
-      slides.forEach((s) => s.classList.remove("active"));
-      dots.forEach((d) => d.classList.remove("active"));
-      slides[index].classList.add("active");
-      if (dots[index]) dots[index].classList.add("active");
-      currentSlide = index;
-    }
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    prevSlideBtn.addEventListener("click", () => showSlide(currentSlide - 1));
-    nextSlideBtn.addEventListener("click", () => showSlide(currentSlide + 1));
-    dots.forEach((dot, idx) => {
-      dot.addEventListener("click", () => showSlide(idx));
-    });
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-    setInterval(() => {
-      showSlide(currentSlide + 1);
-    }, 8000);
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
 
-    // Contact form (simulated submit)
-    const contactForm = document.getElementById("contactForm");
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert(
-        "Thank you for your interest! We will contact you within 24 hours to schedule your free HR infrastructure audit."
-      );
-      contactForm.reset();
-    });
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            alert('Thank you for your interest! We will contact you within 24 hours to schedule your free HR infrastructure audit.');
+            this.reset();
+        });
 
-    // Footer year
-    document.getElementById("year").textContent =
-      new Date().getFullYear().toString();
-  </script>
+        // Floating card 3D effect
+        document.querySelectorAll('.floating-card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Counter animation for stats
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (element.dataset.suffix || '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statItems = entry.target.querySelectorAll('.stat-item h3');
+                    statItems.forEach(stat => {
+                        const text = stat.textContent;
+                        if (text.includes('%')) {
+                            const num = parseInt(text);
+                            stat.dataset.suffix = '%';
+                            animateValue(stat, 0, num, 2000);
+                        } else if (text.includes('+')) {
+                            const num = parseInt(text);
+                            stat.dataset.suffix = '+';
+                            animateValue(stat, 0, num, 2000);
+                        }
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Slideshow functionality
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+
+            if (index >= slides.length) {
+                currentSlideIndex = 0;
+            } else if (index < 0) {
+                currentSlideIndex = slides.length - 1;
+            } else {
+                currentSlideIndex = index;
+            }
+
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlideIndex + direction);
+        }
+
+        function currentSlide(index) {
+            showSlide(index);
+        }
+
+        // Auto-advance slideshow every 8 seconds
+        setInterval(() => {
+            changeSlide(1);
+        }, 8000);
+
+        // Initialize first slide
+        showSlide(0);
+    </script>
 </body>
 </html>
