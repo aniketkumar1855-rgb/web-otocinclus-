@@ -1,0 +1,83 @@
+.body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    padding: 15px 20px;
+    color: white;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+nav a:hover {
+    background-color: #0056b3;
+}
+
+.hero {
+    background: url('hero-image.jpg') no-repeat center center / cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 40px;
+}
+
+.service {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin: 10px;
+    flex: 1 1 calc(30% - 20px);
+    text-align: center;
+    padding: 20px;
+}
+
+.models {
+    padding: 40px;
+    background-color: #e9ecef;
+}
+
+.model {
+    margin: 20px;
+}
+
+.recruitment {
+    padding: 40px;
+}
+
+.case-studies {
+    padding: 40px;
+}
+
+.contact-form {
+    padding: 40px;
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+    .services {
+        flex-direction: column;
+    }
+    .service {
+        flex: 1 1 100%;
+    }
+}
